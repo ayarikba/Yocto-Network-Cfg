@@ -1,0 +1,12 @@
+[Unit]
+Description=Settings for eth1
+After=network.target
+Before=custom-service1.service custom-service2.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/ethtool -s eth1 speed 100 duplex full autoneg off wol d
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
